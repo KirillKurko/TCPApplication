@@ -28,14 +28,14 @@ public class Client {
             objectOutputStream.writeObject(productionCosts);
             objectOutputStream.flush();
 
-            Object object = objectInputStream.readFloat();
-            System.out.println("Cost: " + object);
+            float cost = objectInputStream.readFloat();
+            System.out.println("Cost: " + cost);
 
             objectInputStream.close();
             objectOutputStream.close();
             socket.close();
         }
-        catch (IOException exception) {
+        catch (Exception exception) {
             System.err.println("Error: " + exception.getMessage());
         }
     }
