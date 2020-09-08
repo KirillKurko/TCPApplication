@@ -1,6 +1,6 @@
 package productionCosts;
 
-public class ProductionCosts {
+public class ProductionCosts implements java.io.Serializable {
 
     private float materialCost;
     private float energyCost;
@@ -60,7 +60,7 @@ public class ProductionCosts {
     public float getBusinessExpenses() {
         return businessExpenses;
     }
-    
+
     public void setMaterialCost(float materialCost) {
         this.materialCost = materialCost;
     }

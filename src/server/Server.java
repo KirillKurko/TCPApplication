@@ -28,6 +28,7 @@ public class Server {
             ProductionCosts productionCosts = (ProductionCosts) object;
             float cost = calculateProductionCost(productionCosts);
             objectOutputStream.writeFloat(cost);
+            objectOutputStream.flush();
 
             objectInputStream.close();
             objectInputStream.close();;
