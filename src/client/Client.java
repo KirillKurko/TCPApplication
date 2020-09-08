@@ -15,7 +15,6 @@ public class Client {
     private Socket socket = null;
     private ProductionCostsCreator productionCostsCreator;
 
-
     public Client() {
         try {
             socket = new Socket(serverName, serverPort);
