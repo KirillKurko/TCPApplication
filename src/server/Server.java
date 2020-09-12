@@ -18,20 +18,23 @@ public class Server {
             serverSocket = new ServerSocket(port);
             System.out.println("Server started on port " + serverSocket.getLocalPort());
 
-            socket = serverSocket.accept();
-            System.out.println("Client " + socket.getRemoteSocketAddress() + " connected to server");
+            boolean isRunning = true;
+            while (isRunning) {
+                socket = serverSocket.accept();
+                System.out.println("Client " + socket.getRemoteSocketAddress() + " connected to server");
 
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
-            ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
+                ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
+                ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
 
-            Object object = objectInputStream.readObject();
-            ProductionCosts productionCosts = (ProductionCosts) object;
-            float cost = calculateProductionCost(productionCosts);
-            objectOutputStream.writeFloat(cost);
-            objectOutputStream.flush();
+                Object object = objectInputStream.readObject();
+                ProductionCosts productionCosts = (ProductionCosts) object;
+                float cost = calculateProductionCost(productionCosts);
+                objectOutputStream.writeFloat(cost);
+                objectOutputStream.flush();
 
-            objectInputStream.close();
-            objectInputStream.close();;
+                objectInputStream.close();
+                objectInputStream.close();;
+            }
             socket.close();
 
         }
